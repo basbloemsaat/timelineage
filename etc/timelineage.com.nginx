@@ -25,8 +25,8 @@ server {
 
     listen              443 ssl;
     server_name         timelineage.com www.timelineage.com bohr.timelineage.com local.timelineage.com;
-#    ssl_certificate     /etc/letsencrypt/live/timelineage.com/fullchain.pem;
-#    ssl_certificate_key /etc/letsencrypt/live/timelineage.com/privkey.pem;
+    ssl_certificate     /etc/letsencrypt/live/www.timelineage.com/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/www.timelineage.com/privkey.pem;
     ssl_protocols       TLSv1.1 TLSv1.2;
     ssl_ciphers         HIGH:!aNULL:!MD5;
 
