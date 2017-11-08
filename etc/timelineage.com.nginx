@@ -1,0 +1,46 @@
+server {
+    listen 80;
+    server_name timelineage.com www.timelineage.com bohr.timelineage.com local.timelineage.com;
+    return 301 https://$server_name$request_uri;
+}
+
+server {
+    set_by_lua $lang '
+        if ngx.var.http_accept_language then
+            for lang in (ngx.var.http_accept_language .. ","):gmatch("([^,]*),") do
+                if string.sub(lang, 0, 2) == "nl" then
+                    return("nl")
+                end
+                if string.sub(lang, 0, 2) == "en" then
+                    return("en")
+                end
+            end
+        end
+
+        return("en")
+    ';
+    
+    set $basedir /var/www/timelineage.com;
+    charset utf-8;
+
+    listen              443 ssl;
+    server_name         timelineage.com www.timelineage.com bohr.timelineage.com local.timelineage.com;
+#    ssl_certificate     /etc/letsencrypt/live/timelineage.com/fullchain.pem;
+#    ssl_certificate_key /etc/letsencrypt/live/timelineage.com/privkey.pem;
+    ssl_protocols       TLSv1.1 TLSv1.2;
+    ssl_ciphers         HIGH:!aNULL:!MD5;
+
+    client_max_body_size 20M;
+
+    root $basedir;
+    location / {
+       try_files $uri $uri/index.html @proxy;
+    }
+
+    location @proxy {
+        proxy_pass  http://localhost:5893;
+        proxy_set_header  X-Real-IP  $remote_addr;
+        proxy_intercept_errors on;
+    }
+
+}
