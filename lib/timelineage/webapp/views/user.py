@@ -1,5 +1,5 @@
 from timelineage.webapp import app
-from flask import render_template, jsonify, g
+from flask import render_template, jsonify, g, session
 
 @app.route('/user/')
 @app.route('/user')

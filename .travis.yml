@@ -6,6 +6,7 @@ install:
   - pip install -r requirements.txt
 
 script: 
+  - cp etc/timelineage_config.py.dist etc/timelineage_config.py
   - pytest --cov=timelineage
 
 after_success:
