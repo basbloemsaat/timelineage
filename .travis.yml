@@ -5,6 +5,13 @@ python:
 install:
   - pip install -r requirements.txt
 
+notifications:
+    email:
+        - bas@bloemsaat.com
+
+services:
+    - redis-server
+
 script: 
   - cp etc/timelineage_config.py.dist etc/timelineage_config.py
   - pytest --cov=timelineage
