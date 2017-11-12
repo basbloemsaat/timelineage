@@ -5,21 +5,6 @@ server {
 }
 
 server {
-    set_by_lua $lang '
-        if ngx.var.http_accept_language then
-            for lang in (ngx.var.http_accept_language .. ","):gmatch("([^,]*),") do
-                if string.sub(lang, 0, 2) == "nl" then
-                    return("nl")
-                end
-                if string.sub(lang, 0, 2) == "en" then
-                    return("en")
-                end
-            end
-        end
-
-        return("en")
-    ';
-    
     set $basedir /var/www/timelineage.com;
     charset utf-8;
 
