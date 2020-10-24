@@ -4,7 +4,7 @@
     "lib": ["dom"],
     "module": "es6",
     "noImplicitAny": true,
-    "outDir": "./dist/",
+    "outDir": "../../docs/",
     "removeComments": true,
     "sourceMap": true,
     "target": "es5"
