@@ -8,7 +8,7 @@ module.exports = {
   },
   output: {
     filename: "[name].js",
-    path: path.resolve(__dirname, "../docs/timeline"),
+    path: path.resolve(__dirname, "../bloemsaat.com/docs/timeline"),
   },
   module: {
     rules: [
