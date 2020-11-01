@@ -6,6 +6,10 @@ class Timeline extends TimelineBase {
 
   constructor(svg: d3.Selection<SVGElement, {}, HTMLElement, any>) {
     super(svg);
+
+    this._y = d3
+      .scaleTime()
+      .domain([new Date("2019-10-01"), new Date("2020-01-01")]);
   }
 }
 
