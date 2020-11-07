@@ -23,6 +23,11 @@ class Timeline {
 
     this._init_chart();
     this._resize_chart();
+
+    let me = this;
+    d3.select(window).on("resize", function (e) {
+      me._resize_chart();
+    });
   }
 
   _init_chart(): void {
@@ -75,7 +80,7 @@ class Timeline {
       `translate(${center_left},${top_axis_height})`
     );
 
-    let left_left = (this._width - center_axis_width -15) / 2;
+    let left_left = (this._width - center_axis_width - 15) / 2;
     this._g_left_axis.attr(
       "transform",
       `translate(${left_left},${top_axis_height})`
