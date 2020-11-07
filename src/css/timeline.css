@@ -19,3 +19,15 @@ rect.background {
 footer {
   text-align: right;
 }
+
+g.center {
+  text-anchor: middle;
+}
+
+g.center path {
+  display: none;
+}
+
+g.left text, g.right text {
+  display: none;
+}
